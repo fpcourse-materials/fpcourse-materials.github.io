@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "slides": "https://github.com/fpcourse-materials/slides",
+    "docs": "https://github.com/fpcourse-materials/docs"
+  },
+  "lessons": [
+    {"id":"p01","course":"fp1","kind":"practices","title":"Программирование в λ-исчислении","description":"Термы, свободные и связанные переменные, подстановка, β-редукция и числа Чёрча.","prerequisites":"Специальная подготовка не требуется.","formats":["publish.html","publish-pauses.html","publish.pdf","paper.pdf"],"homework":"01"},
+    {"id":"p02","course":"fp1","kind":"practices","title":"Рекурсия в λ-исчислении","description":"Неподвижные точки, комбинатор рекурсии, нормальные формы и стратегии вычисления.","prerequisites":"Термы и β-редукция из практики 1.","formats":["publish.html","publish-pauses.html","publish.pdf","paper.pdf"],"homework":"02"},
+    {"id":"p03","course":"fp1","kind":"practices","title":"Типы в λ-исчислении","description":"Простые типы, правила типизации, системы Карри и Чёрча, население типов.","prerequisites":"λ-исчисление и рекурсия из практик 1–2.","formats":["publish.html","publish-pauses.html","publish.pdf","paper.pdf"],"homework":"03"},
+    {"id":"p04","course":"fp1","kind":"practices","title":"Введение в Haskell","description":"Первые функции, сопоставление с образцом, ленивое вычисление и работа в GHCi.","prerequisites":"Понятия функции, вычисления и типа.","formats":["publish.html","publish-pauses.html","publish.pdf","paper.pdf"]},
+    {"id":"p05","course":"fp1","kind":"practices","title":"Типы данных","description":"Типы-произведения и типы-суммы, рекурсивные структуры, списки, записи и newtype.","prerequisites":"Объявление функций и сопоставление с образцом в Haskell.","formats":["publish.html","publish-pauses.html","publish.pdf","paper.pdf"]},
+    {"id":"s01","course":"fp1","kind":"sessions","title":"Шпаргалка: язык, вычисление, типы","description":"Краткий справочник по λ-исчислению для первой очной сессии.","prerequisites":"Практики 1–3.","formats":["publish.html","publish-pauses.html","publish.pdf"]},
+    {"id":"l01","course":"fp2","kind":"lectures","title":"Введение и воспоминания о ФП","description":"Обзор курса, термы и типы, функции, данные, классы типов и монады в Haskell.","prerequisites":"Базовый курс функционального программирования и Haskell.","formats":["publish.html","publish-pauses.html","publish.pdf"]},
+    {"id":"l02","course":"fp2","kind":"lectures","title":"Параметрический полиморфизм","description":"Полиморфные функции, параметричность и представление обобщённого кода.","prerequisites":"Типы, функции и повторение из лекции 1.","formats":["publish.html","publish-pauses.html","publish.pdf"]},
+    {"id":"l03","course":"fp2","kind":"lectures","title":"Специальный (ad-hoc) полиморфизм","description":"Классы типов, экземпляры, словари, когерентность и связь с другими языками.","prerequisites":"Параметрический полиморфизм из лекции 2.","formats":["publish.html","publish-pauses.html","publish.pdf"]}
+  ],
+  "homework": [
+    {"id":"01","title":"Программирование в λ-исчислении","url":"https://github.com/fpcourse-students/fp-2026-01"},
+    {"id":"02","title":"Рекурсия в λ-исчислении","url":"https://github.com/fpcourse-students/fp-2026-02"},
+    {"id":"03","title":"Типы в λ-исчислении","url":"https://github.com/fpcourse-students/fp-2026-03"}
+  ],
+  "notes": [
+    {"file":"fp2.pdf","title":"Полный конспект ФП 2","description":"Все главы конспекта в одном PDF."},
+    {"file":"fp2-ch1-3.1.4.pdf","title":"Конспект до § 3.1.4","description":"Студенческая версия: главы 1–2 и начало главы 3."}
+  ],
+  "archive": [
+    {"id":"01","title":"Программирование в λ-исчислении","files":["mse2025-fp1-slides-01-handout.pdf","mse2025-fp1-slides-01-pause.pdf"]},
+    {"id":"02","title":"Рекурсия в λ-исчислении","files":["mse2025-fp1-slides-02-handout.pdf","mse2025-fp1-slides-02-pause.pdf"]},
+    {"id":"03","title":"Типы в λ-исчислении","files":["mse2025-fp1-slides-03-handout.pdf","mse2025-fp1-slides-03-pause.pdf"]},
+    {"id":"04","title":"Введение в Haskell","files":["mse2025-fp1-slides-04-handout.pdf","mse2025-fp1-slides-04-pause.pdf"]},
+    {"id":"05","title":"Типы данных","files":["mse2025-fp1-slides-05-handout.pdf","mse2025-fp1-slides-05-pause.pdf"]},
+    {"id":"06","title":"Классы типов","files":["mse2025-fp1-slides-06-handout.pdf","mse2025-fp1-slides-06-pause.pdf"]},
+    {"id":"07","title":"Свёртки","files":["mse2025-fp1-slides-07-handout.pdf","mse2025-fp1-slides-07-pause.pdf"]},
+    {"id":"08","title":"Аппликативные функторы","files":["mse2025-fp1-slides-08-handout.pdf","mse2025-fp1-slides-08-pause.pdf"]},
+    {"id":"09","title":"Применение аппликативных функторов","files":["mse2025-fp1-slides-09-handout.pdf","mse2025-fp1-slides-09-pause.pdf"]},
+    {"id":"10","title":"Монады","files":["mse2025-fp1-slides-10-handout.pdf","mse2025-fp1-slides-10-pause.pdf"]},
+    {"id":"11","title":"Стандартные монады","files":["mse2025-fp1-slides-11-handout.pdf","mse2025-fp1-slides-11-pause.pdf"]},
+    {"id":"12","title":"Трансформеры монад","files":["mse2025-fp1-slides-12-handout.pdf","mse2025-fp1-slides-12-pause.pdf"]},
+    {"id":"13","title":"Вывод типов","files":["mse2025-fp1-slides-13-handout.pdf","mse2025-fp1-slides-13-pause.pdf"]},
+    {"id":"14","title":"Рекурсивные типы","files":["mse2025-fp1-slides-14-pause.pdf"]},
+    {"id":"fin","title":"Эпилог","files":["mse2025-fp1-slides-fin-handout.pdf","mse2025-fp1-slides-fin-pause.pdf"]}
+  ]
+}

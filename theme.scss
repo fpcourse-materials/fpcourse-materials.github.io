@@ -1,0 +1,40 @@
+/*-- scss:defaults --*/
+$primary: #245746;
+$body-color: #20352e;
+$body-bg: #fafbf8;
+$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", sans-serif;
+$headings-font-weight: 650;
+$link-color: #245746;
+$navbar-bg: #fafbf8;
+/*-- scss:rules --*/
+.navbar { border-bottom: 1px solid #dce4da; }
+.navbar-brand { font-weight: 750; letter-spacing: -.035em; }
+#quarto-content { max-width: 1440px; margin: auto; }
+h1, h2, h3 { letter-spacing: -.025em; }
+.hero { padding: 2.2rem 0 2.8rem; max-width: 850px; }
+.hero .eyebrow, .eyebrow { color: #63786b; font-size: .78rem; font-weight: 650; letter-spacing: .13em; text-transform: uppercase; }
+.hero h1 { font-size: clamp(2rem, 5.3vw, 4.4rem); line-height: 1.05; margin: .8rem 0 1.1rem; overflow-wrap: anywhere; }
+.hero .lead { font-size: 1.22rem; color: #52655b; max-width: 660px; }
+.course-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; margin: 1rem 0 2.7rem; }
+.course-card { display: block; border: 1px solid #d7e1d4; border-radius: 16px; padding: 1.7rem; background: #fff; text-decoration: none; color: $body-color; transition: border-color .15s, transform .15s; }
+.course-card:hover { color: $body-color; border-color: $primary; transform: translateY(-2px); }
+.course-card h2 { margin-top: .8rem; font-size: 1.7rem; }
+.course-card p { color: #52655b; }
+.course-card .arrow { font-weight: 650; color: $primary; }
+.material-links { display: flex; flex-wrap: wrap; gap: .65rem; margin: 1.3rem 0 2rem; }
+.material-links > p { display: contents; }
+.material-links a { display: block; border: 1px solid #cfdccc; border-radius: 8px; background: white; padding: .65rem .95rem; text-decoration: none; font-weight: 550; }
+.material-links a:first-child { background: $primary; color: white; border-color: $primary; }
+.lesson-list { list-style: none; padding-left: 0; margin-top: 1rem; }
+.lesson-list li { border-top: 1px solid #dce4da; padding: 1rem 0; }
+.lesson-list a { font-weight: 600; text-decoration: none; }
+.lesson-list small { display: block; color: #63786b; margin-top: .35rem; }
+.note { color: #63786b; font-size: .95rem; }
+footer { border-top: 1px solid #dce4da; }
+@media (max-width: 650px) {
+  .course-grid { grid-template-columns: 1fr; }
+  .hero { padding: 1.2rem 0 1.4rem; }
+  .course-card { padding: 1.3rem; }
+  .material-links a { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
