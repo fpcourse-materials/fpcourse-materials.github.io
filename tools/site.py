@@ -11,6 +11,7 @@ import re
 import shutil
 import subprocess
 from urllib.parse import unquote, urlsplit
+from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 FORMATS = {"publish.html": "Слайды", "publish-pauses.html": "По шагам", "publish.pdf": "Слайды в PDF", "paper.pdf": "Листок упражнений"}
@@ -249,9 +250,34 @@ def check(data):
     print(f"Verified {len(html_pages)} pages, all local links/anchors, search index, and {len(expected)} export checksums")
 
 
+def check_live(data):
+    provenance = integrity(data)
+    base = "https://fpcourse-materials.github.io/"
+    for path, expected in [("", "Функциональное программирование"), ("fp1/2026/practices/p05/", "Практика 5. Типы данных"), ("fp2/2026/", "Конспект")]:
+        with urlopen(base + path, timeout=30) as response:
+            body = response.read().decode()
+            if response.status != 200 or expected not in body:
+                raise ValueError(f"Unexpected deployed page: {path}")
+    with urlopen(base + "search.json", timeout=30) as response:
+        index = json.load(response)
+        if not any("Типы данных" in item.get("title", "") for item in index):
+            raise ValueError("Deployed search index lacks P5")
+    samples = [
+        "fp1/2026/practices/p05/p05-publish.html",
+        "fp1/2026/practices/p05/p05-paper.pdf",
+        "fp2/2026/notes/fp2.pdf",
+        "archive/fp1/2025/mse2025-fp1-slides-14-pause.pdf",
+    ]
+    for relative in samples:
+        with urlopen(base + "materials/" + relative, timeout=30) as response:
+            if hashlib.sha256(response.read()).hexdigest() != provenance["files"][relative]["sha256"]:
+                raise ValueError(f"Deployed file differs: {relative}")
+    print("Live portal, lesson pages, search index, slide HTML, exercise sheet, notes and archive verified")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["import", "prepare", "check"])
+    parser.add_argument("command", choices=["import", "prepare", "check", "live"])
     parser.add_argument("--slides", type=Path)
     parser.add_argument("--docs", type=Path)
     args = parser.parse_args()
@@ -262,8 +288,10 @@ def main():
         import_materials(data, args.slides, args.docs)
     elif args.command == "prepare":
         prepare(data)
-    else:
+    elif args.command == "check":
         check(data)
+    else:
+        check_live(data)
 
 
 if __name__ == "__main__":

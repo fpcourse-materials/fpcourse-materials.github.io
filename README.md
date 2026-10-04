@@ -13,6 +13,8 @@ make preview
 
 The complete publication is in `out/site/`. `make screenshots` checks desktop and mobile pages using the existing slides repository's Playwright and system Chromium; override `SLIDES` and `CHROME` when needed. Generated slides and PDFs are linked resources; portal search indexes the course descriptions, topics, and homework pages, not the full contents of those files.
 
+After deployment, `make live-check` verifies the public portal and search index, then compares representative slide, exercise, notes, and archive downloads against their recorded checksums.
+
 ## Refresh teaching materials
 
 The catalog in `materials.json` is the explicit publication list. Sources remain in their original repositories. Import only the catalog's approved student artifacts; the import never copies source repositories, teacher notes, quiz keys, screenshots, or solution branches. The source checkout can contain working changes: these are identified in `publication.json` alongside source revisions and SHA-256 checksums of every published file.
