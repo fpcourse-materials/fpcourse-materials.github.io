@@ -6,6 +6,7 @@
 # make screenshots capture desktop/mobile previews (requires slides' Playwright)
 # make clean       remove generated output, preserving imported materials
 # make live-check  verify the deployed portal and representative downloads
+# make sync-catalog relocate/remove existing exports to match the current catalog
 .DEFAULT_GOAL := build
 QUARTO ?= quarto
 PYTHON ?= python3
@@ -17,11 +18,13 @@ CHROME ?= /usr/bin/chromium
 export CHROME
 SITE_CACHE ?= /tmp/fpcourse-site-cache
 export XDG_CACHE_HOME := $(SITE_CACHE)
-.PHONY: help import prepare build check verify preview screenshots clean live-check
+.PHONY: help import sync-catalog prepare build check verify preview screenshots clean live-check
 help:
-	@sed -n '1,8p' Makefile | sed 's/^# //'
+	@sed -n '1,9p' Makefile | sed 's/^# //'
 import:
 	$(PYTHON) tools/site.py import --slides "$(SLIDES)" --docs "$(DOCS)"
+sync-catalog:
+	$(PYTHON) tools/site.py sync-catalog
 prepare:
 	$(PYTHON) tools/site.py prepare
 build: prepare

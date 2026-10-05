@@ -1,6 +1,6 @@
 import { createRequire } from 'node:module';
 import { resolve } from 'node:path';
-import { mkdirSync } from 'node:fs';
+import { mkdirSync, readFileSync } from 'node:fs';
 import { spawn } from 'node:child_process';
 const slides = resolve(process.argv[2] || '../slides');
 const port = Number(process.argv[3] || 8765);
@@ -16,7 +16,10 @@ try {
   if (server.exitCode !== null) throw new Error(serverError);
   browser = await chromium.launch({ executablePath: process.env.CHROME || '/usr/bin/chromium' });
   const errors = [];
-  const pages = ['/', '/fp1/2026/', '/fp1/2026/practices/p05/', '/fp2/2026/', '/archive/fp1-2025.html'];
+  const catalog = JSON.parse(readFileSync('materials.json', 'utf8'));
+  const practice = catalog.lessons.filter(x => x.course === 'fp1').at(-1);
+  const lessonPath = lesson => `/${catalog.year}/${lesson.course}/${lesson.kind}/${lesson.id}/`;
+  const pages = ['/', `/${catalog.year}/`, `/${catalog.year}/fp1/`, lessonPath(practice), `/${catalog.year}/fp2/`, lessonPath(catalog.lessons.at(-1))];
   for (const [name, width, height] of [['desktop', 1440, 1000], ['mobile', 390, 844]]) {
     const page = await browser.newPage({ viewport: { width, height } });
     page.on('pageerror', err => errors.push(err.message));
@@ -30,20 +33,20 @@ try {
     // Exercise the search UI and confirm a current lesson appears in results.
     await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: 'networkidle' });
     await page.locator('#quarto-search button').click();
-    await page.locator('.aa-Input').fill('Типы данных');
+    await page.locator('.aa-Input').fill(practice.title);
     await page.locator('.aa-Item').first().waitFor();
-    if (!(await page.locator('.aa-Panel').innerText()).includes('Типы данных')) errors.push(`${name}: search returned no lesson`);
+    if (!(await page.locator('.aa-Panel').innerText()).includes(practice.title)) errors.push(`${name}: search returned no lesson`);
     await page.close();
   }
   const deck = await browser.newPage();
   for (const mode of ['publish', 'publish-pauses']) {
-    await deck.goto(`http://127.0.0.1:${port}/materials/fp1/2026/practices/p05/p05-${mode}.html`, { waitUntil: 'load' });
+    await deck.goto(`http://127.0.0.1:${port}${lessonPath(practice)}${practice.id}-${mode}.html`, { waitUntil: 'load' });
     await deck.waitForFunction(() => window.Reveal?.isReady());
     if (await deck.locator('aside.notes').count()) errors.push(`${mode}: speaker notes present`);
     if (await deck.locator('.katex').count() === 0) errors.push(`${mode}: rendered math absent`);
   }
   if (errors.length) throw new Error(errors.join('\n'));
-  console.log('Desktop/mobile pages, search, and both P5 slide formats verified; screenshots in out/screenshots/');
+  console.log(`Desktop/mobile year-first pages, search, and both ${practice.id.toUpperCase()} slide formats verified; screenshots in out/screenshots/`);
 } finally {
   if (browser) await browser.close();
   server.kill();

@@ -15,383 +15,144 @@
     }
   },
   "files": {
-    "fp1/2026/practices/p01/p01-publish.html": {
+    "2026/fp1/practices/p01/p01-publish.html": {
       "source": "slides",
       "export": "out/fp1/p01/p01-publish.html",
       "sha256": "b8ec63d96aca948fb1f6cf50fd6e76aaaa2766aa7e8c8b93f19070912432b893",
       "bytes": 5313227
     },
-    "fp1/2026/practices/p01/p01-publish-pauses.html": {
+    "2026/fp1/practices/p01/p01-publish-pauses.html": {
       "source": "slides",
       "export": "out/fp1/p01/p01-publish-pauses.html",
       "sha256": "30aa63a403d4fff860bdad5660648df1a9b60c741c5797c0777c8b300f733faf",
       "bytes": 5313334
     },
-    "fp1/2026/practices/p01/p01-publish.pdf": {
+    "2026/fp1/practices/p01/p01-publish.pdf": {
       "source": "slides",
       "export": "out/fp1/p01/p01-publish.pdf",
       "sha256": "90c001706cea3605d542c48863feb3e01fa97ec08065105e0abd01e2887f37ba",
       "bytes": 576205
     },
-    "fp1/2026/practices/p01/p01-paper.pdf": {
+    "2026/fp1/practices/p01/p01-paper.pdf": {
       "source": "slides",
       "export": "out/fp1/p01/p01-paper.pdf",
       "sha256": "046b4e1e0b05ba8ed97612e6c64c7c81d86975bd5b33d66b342ba3ecc968a674",
       "bytes": 61177
     },
-    "fp1/2026/practices/p02/p02-publish.html": {
+    "2026/fp1/practices/p02/p02-publish.html": {
       "source": "slides",
       "export": "out/fp1/p02/p02-publish.html",
       "sha256": "7fbad6888b2f227dbd8b844f2021586089feac591cad29f6bf95a9e6a52283ea",
       "bytes": 5298278
     },
-    "fp1/2026/practices/p02/p02-publish-pauses.html": {
+    "2026/fp1/practices/p02/p02-publish-pauses.html": {
       "source": "slides",
       "export": "out/fp1/p02/p02-publish-pauses.html",
       "sha256": "0ce1e3512a360de915707d5d278d0d85020127365fbcd61edfec99498bbe465c",
       "bytes": 5298378
     },
-    "fp1/2026/practices/p02/p02-publish.pdf": {
+    "2026/fp1/practices/p02/p02-publish.pdf": {
       "source": "slides",
       "export": "out/fp1/p02/p02-publish.pdf",
       "sha256": "1a6bd1431b677c76c5f1ce52d0c4a17c0c8571635277420e80aea3da9a290b1c",
       "bytes": 393134
     },
-    "fp1/2026/practices/p02/p02-paper.pdf": {
+    "2026/fp1/practices/p02/p02-paper.pdf": {
       "source": "slides",
       "export": "out/fp1/p02/p02-paper.pdf",
       "sha256": "47033dd4c8a4db420ca938e1956b7f0d5aa6d75308aca2d3b2c4f748fd22fd52",
       "bytes": 63662
     },
-    "fp1/2026/practices/p03/p03-publish.html": {
+    "2026/fp1/practices/p03/p03-publish.html": {
       "source": "slides",
       "export": "out/fp1/p03/p03-publish.html",
       "sha256": "03d31aa482117deb04d08070d87faef1e4f392df7b6f6e1e9c970c4435c69c4c",
       "bytes": 5354264
     },
-    "fp1/2026/practices/p03/p03-publish-pauses.html": {
+    "2026/fp1/practices/p03/p03-publish-pauses.html": {
       "source": "slides",
       "export": "out/fp1/p03/p03-publish-pauses.html",
       "sha256": "5448a8f39a18d40e405faf798872553004ad281872f6ba50b9210dc0d2617d0b",
       "bytes": 5354416
     },
-    "fp1/2026/practices/p03/p03-publish.pdf": {
+    "2026/fp1/practices/p03/p03-publish.pdf": {
       "source": "slides",
       "export": "out/fp1/p03/p03-publish.pdf",
       "sha256": "0b6e261594c4cf0cd5dd0f7deec101a4b8771108a36b96c593960d338d69757f",
       "bytes": 633094
     },
-    "fp1/2026/practices/p03/p03-paper.pdf": {
+    "2026/fp1/practices/p03/p03-paper.pdf": {
       "source": "slides",
       "export": "out/fp1/p03/p03-paper.pdf",
       "sha256": "ae783d8ce7d35c2b0125fffdf46cd686e8705769f468d5c98c739c7bd4dfec5d",
       "bytes": 61532
     },
-    "fp1/2026/practices/p04/p04-publish.html": {
+    "2026/fp1/practices/p04/p04-publish.html": {
       "source": "slides",
       "export": "out/fp1/p04/p04-publish.html",
       "sha256": "ad72e7fed36a9613b52a6edaef8776ebf60f47540fc7e68acd0f49ff97b9e7e2",
       "bytes": 5273739
     },
-    "fp1/2026/practices/p04/p04-publish-pauses.html": {
+    "2026/fp1/practices/p04/p04-publish-pauses.html": {
       "source": "slides",
       "export": "out/fp1/p04/p04-publish-pauses.html",
       "sha256": "439e524e06637d7d381aaa40a75ac5d6f025f6ff070808356a0f2dc8f0244d6f",
       "bytes": 5273828
     },
-    "fp1/2026/practices/p04/p04-publish.pdf": {
+    "2026/fp1/practices/p04/p04-publish.pdf": {
       "source": "slides",
       "export": "out/fp1/p04/p04-publish.pdf",
       "sha256": "0d19bd6344814d142f2bcebb1eb73dcb721eb8c4185ffafed3366fef97dfaf51",
       "bytes": 389228
     },
-    "fp1/2026/practices/p04/p04-paper.pdf": {
+    "2026/fp1/practices/p04/p04-paper.pdf": {
       "source": "slides",
       "export": "out/fp1/p04/p04-paper.pdf",
       "sha256": "06afa532489840f98bfb62eb75980d51e01a634610dba0c6cf86a7fc72920d1d",
       "bytes": 72522
     },
-    "fp1/2026/practices/p05/p05-publish.html": {
-      "source": "slides",
-      "export": "out/fp1/p05/p05-publish.html",
-      "sha256": "a9b125948cc7a84f13b234b3115ecf9961f045ee8f5a75bfe8d5efb96e438353",
-      "bytes": 5350977
-    },
-    "fp1/2026/practices/p05/p05-publish-pauses.html": {
-      "source": "slides",
-      "export": "out/fp1/p05/p05-publish-pauses.html",
-      "sha256": "56514112bbbd296c0aa85236bafb902e47406b9d76a03466224ea90d044f1cab",
-      "bytes": 5351037
-    },
-    "fp1/2026/practices/p05/p05-publish.pdf": {
-      "source": "slides",
-      "export": "out/fp1/p05/p05-publish.pdf",
-      "sha256": "8e4b977a24bd641a5d718f65fe516640ac41c66c00b7980c8bf7fe5bc8c306b3",
-      "bytes": 461336
-    },
-    "fp1/2026/practices/p05/p05-paper.pdf": {
-      "source": "slides",
-      "export": "out/fp1/p05/p05-paper.pdf",
-      "sha256": "8e1025b021366b3c66be80bd0fbd9d23f1434bcb2107a0c5c31e253a3b4b37b8",
-      "bytes": 101306
-    },
-    "fp1/2026/sessions/s01/s01-publish.html": {
-      "source": "slides",
-      "export": "out/fp1/s01/s01-publish.html",
-      "sha256": "948b39673dcd4c312f01a1ff8e17ea2f20f163e030cc49ea4899ec8b20b90702",
-      "bytes": 5212196
-    },
-    "fp1/2026/sessions/s01/s01-publish-pauses.html": {
-      "source": "slides",
-      "export": "out/fp1/s01/s01-publish-pauses.html",
-      "sha256": "bcdf6ca330597fc89b4b76e0666f914ac2df534e8dfb7ad02da426d05175f4e5",
-      "bytes": 5212195
-    },
-    "fp1/2026/sessions/s01/s01-publish.pdf": {
-      "source": "slides",
-      "export": "out/fp1/s01/s01-publish.pdf",
-      "sha256": "a63a3bdb74670359d21bc249bf5dce6eb3ff5ba29a2b9cd72ff4b73882bfd9be",
-      "bytes": 74330
-    },
-    "fp2/2026/lectures/l01/l01-publish.html": {
+    "2026/fp2/lectures/l01/l01-publish.html": {
       "source": "slides",
       "export": "out/fp2/l01/l01-publish.html",
       "sha256": "95cb1239bcb06137e5f2eff4f00ddaa7044e39135a37bccb41a64b4923aafac9",
       "bytes": 5303555
     },
-    "fp2/2026/lectures/l01/l01-publish-pauses.html": {
+    "2026/fp2/lectures/l01/l01-publish-pauses.html": {
       "source": "slides",
       "export": "out/fp2/l01/l01-publish-pauses.html",
       "sha256": "c21709bed56eeead49df680b1136e35a523642493cbd3dcfbae6efc23f6cd231",
       "bytes": 5303572
     },
-    "fp2/2026/lectures/l01/l01-publish.pdf": {
+    "2026/fp2/lectures/l01/l01-publish.pdf": {
       "source": "slides",
       "export": "out/fp2/l01/l01-publish.pdf",
       "sha256": "1e5b2958d27f7be14852f9ae9108bd5aabfc69376cd32dccd9adc52cd97abae4",
       "bytes": 464816
     },
-    "fp2/2026/lectures/l02/l02-publish.html": {
+    "2026/fp2/lectures/l02/l02-publish.html": {
       "source": "slides",
       "export": "out/fp2/l02/l02-publish.html",
       "sha256": "00c651584ba1b9a6e467bdf66770f5fcd300d2b9b70d153a7e2d1608f9f0bf9d",
       "bytes": 5789125
     },
-    "fp2/2026/lectures/l02/l02-publish-pauses.html": {
+    "2026/fp2/lectures/l02/l02-publish-pauses.html": {
       "source": "slides",
       "export": "out/fp2/l02/l02-publish-pauses.html",
       "sha256": "0a995762d96d30b71f68b3e69df7e81ce91fe980ab5f5f5e315b335c7409711f",
       "bytes": 5789204
     },
-    "fp2/2026/lectures/l02/l02-publish.pdf": {
+    "2026/fp2/lectures/l02/l02-publish.pdf": {
       "source": "slides",
       "export": "out/fp2/l02/l02-publish.pdf",
       "sha256": "4872850ff1593cac12da607eedfa4714ac0d6d19f2e492002011657dcba2e3e8",
       "bytes": 1032116
     },
-    "fp2/2026/lectures/l03/l03-publish.html": {
-      "source": "slides",
-      "export": "out/fp2/l03/l03-publish.html",
-      "sha256": "5ff625c63c9b802acd588890c9f95753152753d9e2a45d1ff5996970fa8e48b0",
-      "bytes": 5421078
-    },
-    "fp2/2026/lectures/l03/l03-publish-pauses.html": {
-      "source": "slides",
-      "export": "out/fp2/l03/l03-publish-pauses.html",
-      "sha256": "44543fd9042e6efea9a2b0157659fa7393b00a8d6899d7910a01c885b24d2947",
-      "bytes": 5421079
-    },
-    "fp2/2026/lectures/l03/l03-publish.pdf": {
-      "source": "slides",
-      "export": "out/fp2/l03/l03-publish.pdf",
-      "sha256": "d1a9c6d8edb041a7f4b645a76b5f12d3a488a351adb4da9698e6b15afd31598d",
-      "bytes": 754359
-    },
-    "fp2/2026/notes/fp2.pdf": {
-      "source": "docs",
-      "export": "fp2.pdf",
-      "sha256": "b31b55f1fdce2dbc277a93bbcaf192362d0e13c82b70992effb8023584ea62a0",
-      "bytes": 2028096
-    },
-    "fp2/2026/notes/fp2-ch1-3.1.4.pdf": {
+    "2026/fp2/notes/fp2-ch1-3.1.4.pdf": {
       "source": "docs",
       "export": "fp2-ch1-3.1.4.pdf",
       "sha256": "b5356b3cf7dab4d631d8d58725591b751e6bb05a88cb483d0f2a6ce99f6b8fef",
       "bytes": 709689
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-01-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-01-handout.pdf",
-      "sha256": "a756623e6519b6897f843c5793af6eb91d43034539ce8b5100b699edbe4a9dce",
-      "bytes": 537524
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-01-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-01-pause.pdf",
-      "sha256": "ef515bc5276d1f0c59c0ac02462393233647e01cffbadf18fc5043bcca187ae5",
-      "bytes": 816040
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-02-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-02-handout.pdf",
-      "sha256": "4ac1c95aa2c85c386f6c580219e1ebaa1fc64bca6ae456b0568ad0e4dd42b35c",
-      "bytes": 315734
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-02-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-02-pause.pdf",
-      "sha256": "e896fc0b75b6fa5c19ef495ebbdf86ed858853615a539468ba7eb46fc76debfd",
-      "bytes": 503597
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-03-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-03-handout.pdf",
-      "sha256": "d34f87831fb6ff30def66df9d40ba9afd24add70886ba53434f391f94eabc51e",
-      "bytes": 374644
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-03-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-03-pause.pdf",
-      "sha256": "9a62bf01d860fcf385d21ea54aee8153ebdb8cd203df84e46574c08686c4170a",
-      "bytes": 475386
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-04-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-04-handout.pdf",
-      "sha256": "6bff2d4cf92acefd7cc3593c16eb85ec0f406ebbc04b88814281ec4afc1dcfba",
-      "bytes": 199699
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-04-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-04-pause.pdf",
-      "sha256": "ad7e6d12903f65cca818431ccd07ed852c26a043da738bd3f0e530ddc2386cd0",
-      "bytes": 224137
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-05-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-05-handout.pdf",
-      "sha256": "ad12ce519316e0d85e048116c3d9b4c2eeab3cd823fbf26c1d11c590da0a4968",
-      "bytes": 267808
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-05-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-05-pause.pdf",
-      "sha256": "3f924f9a5428ebae99868040696eec55e88014e119147b7e581570f669bbd8c9",
-      "bytes": 331696
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-06-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-06-handout.pdf",
-      "sha256": "8ea850a84c6042dc30227ec4b4a1adc1d6f0c15460a98a129a7b3ed85ac44c9b",
-      "bytes": 210055
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-06-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-06-pause.pdf",
-      "sha256": "1f897182d9232aa7217a0d47c240db935b6d36253cbf35e779eaebc1307babd5",
-      "bytes": 226925
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-07-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-07-handout.pdf",
-      "sha256": "171faebf2433486fd15894e29ed5e5677d0f8cc5c11cb55b872aea914d2da39d",
-      "bytes": 270333
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-07-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-07-pause.pdf",
-      "sha256": "58f5f516ff0c2913b97832f7ef94d557f16289c261b523eaa2e775e2400f43ae",
-      "bytes": 306010
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-08-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-08-handout.pdf",
-      "sha256": "b111160f87e465cb9e9345e17e7c684a622feae9cb9458410a50650ecea80cc6",
-      "bytes": 356625
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-08-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-08-pause.pdf",
-      "sha256": "11fc9412f46ad1adab3e18f702e5ff917b61d12553aa4cce914377f6e6c2c978",
-      "bytes": 384888
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-09-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-09-handout.pdf",
-      "sha256": "e5fe41040b2b59d8ad14e213e0ead6d76990df079931f4dfbf6be324805e148f",
-      "bytes": 167388
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-09-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-09-pause.pdf",
-      "sha256": "4d53f88dfe5b6767d04b506c902684ad5069385a77a39bec91ca686b4f90ecfe",
-      "bytes": 192401
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-10-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-10-handout.pdf",
-      "sha256": "ab1657f7714be73d79a509b8db78116dcf00174bf3d25f93507b02ddc2219b2a",
-      "bytes": 207459
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-10-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-10-pause.pdf",
-      "sha256": "078944f316d42d1e55d4d16b35a65a6809b7b5d216f4ff3f118eafb6d176b487",
-      "bytes": 260060
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-11-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-11-handout.pdf",
-      "sha256": "e899d3d7696b359ac4e932233b4151e1cd895e9f35970628702e1013aca7a78b",
-      "bytes": 365873
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-11-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-11-pause.pdf",
-      "sha256": "b65dd1e7480c7f37279f5755cc1f97eac3c0cf4a901a13d6d5a0d59907f240c6",
-      "bytes": 374062
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-12-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-12-handout.pdf",
-      "sha256": "7a86cb35592d15c9971e9064bf291426e24ec7b82dca56434d009fbbca59ffea",
-      "bytes": 184235
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-12-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-12-pause.pdf",
-      "sha256": "f61ef21168ef3ce7e2aed5773428381c4c91d3251fa707f2ef3739ed2ed46321",
-      "bytes": 195799
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-13-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-13-handout.pdf",
-      "sha256": "b5a3af546406fa45e09ea5e04aa0017b305d89b669157d10a25f2699f27d2843",
-      "bytes": 181359
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-13-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-13-pause.pdf",
-      "sha256": "fe5f41614db7d8f784c345a53dad7890807a62217da7a1470a5c80f4dbdb9512",
-      "bytes": 280719
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-14-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-14-pause.pdf",
-      "sha256": "00d3530ea9fa72c5e8369dd96e77e9c350d5df12eee02a2a1e045c9a4ea14555",
-      "bytes": 908349
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-fin-handout.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-fin-handout.pdf",
-      "sha256": "1539a5fdd294368f03b36506562cf88198d2730d58d333d93e7a450fb8a787cc",
-      "bytes": 395950
-    },
-    "archive/fp1/2025/mse2025-fp1-slides-fin-pause.pdf": {
-      "source": "docs",
-      "export": "mse2025-fp1-slides-fin-pause.pdf",
-      "sha256": "7ab4beed539a357b23a00eed4d1b9736ad9714917f6197b0ea57cae3ca6edffe",
-      "bytes": 398941
     }
-  }
+  },
+  "catalog_updated_at": "2026-10-05T09:53:10.526072+00:00"
 }

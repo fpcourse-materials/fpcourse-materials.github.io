@@ -4,7 +4,8 @@ project:
   render:
     - '**/*.qmd'
   resources:
-    - materials/**
+    - '2026/**/*.html'
+    - '2026/**/*.pdf'
     - publication.json
     - favicon.svg
 website:
@@ -16,12 +17,10 @@ website:
     title: "ФП / материалы"
     background: light
     left:
-      - href: fp1/index.qmd
+      - href: 2026/fp1/index.qmd
         text: ФП 1
-      - href: fp2/index.qmd
+      - href: 2026/fp2/index.qmd
         text: ФП 2
-      - href: archive/index.qmd
-        text: Архив
     right:
       - href: https://github.com/fpcourse-materials
         icon: github
