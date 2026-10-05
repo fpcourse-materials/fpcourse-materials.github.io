@@ -7,6 +7,7 @@
 # make clean       remove generated output, preserving imported materials
 # make live-check  verify the deployed portal and representative downloads
 # make sync-catalog relocate/remove existing exports to match the current catalog
+# make fix-navigation preserve browser Back/Forward shortcuts in imported slides
 .DEFAULT_GOAL := build
 QUARTO ?= quarto
 PYTHON ?= python3
@@ -18,11 +19,13 @@ CHROME ?= /usr/bin/chromium
 export CHROME
 SITE_CACHE ?= /tmp/fpcourse-site-cache
 export XDG_CACHE_HOME := $(SITE_CACHE)
-.PHONY: help import sync-catalog prepare build check verify preview screenshots clean live-check
+.PHONY: help import fix-navigation sync-catalog prepare build check verify preview screenshots clean live-check
 help:
-	@sed -n '1,9p' Makefile | sed 's/^# //'
+	@sed -n '1,10p' Makefile | sed 's/^# //'
 import:
 	$(PYTHON) tools/site.py import --slides "$(SLIDES)" --docs "$(DOCS)"
+fix-navigation:
+	$(PYTHON) tools/site.py fix-navigation
 sync-catalog:
 	$(PYTHON) tools/site.py sync-catalog
 prepare:

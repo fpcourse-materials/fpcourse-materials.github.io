@@ -40,6 +40,12 @@ def catalog():
     for item in data["homework"]:
         if not item["url"].startswith("https://github.com/fpcourse-students/"):
             raise ValueError("Homework must link to a student repository")
+    homework_keys = {(item["course"], item["id"]) for item in data["homework"]}
+    if len(homework_keys) != len(data["homework"]):
+        raise ValueError("Duplicate homework within a course")
+    for lesson in data["lessons"]:
+        if lesson.get("homework") and (lesson["course"], lesson["homework"]) not in homework_keys:
+            raise ValueError(f'Homework missing for {lesson["course"]}/{lesson["id"]}')
     return data
 
 
@@ -54,6 +60,41 @@ def exports(data):
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def preserve_browser_navigation(path):
+    html = path.read_text()
+    snippet = (ROOT / "assets/browser-navigation.html").read_text()
+    if 'id="fp-browser-navigation"' in html:
+        if html.index('id="fp-browser-navigation"') > html.rfind("Reveal.initialize({"):
+            return False
+        # Reveal's embedded speaker-view template also contains a closing body tag.
+        # Repair an earlier insertion into that template before touching the document.
+        if snippet not in html:
+            raise ValueError(f"Unexpected existing navigation script: {path}")
+        html = html.replace(snippet + "\n", "", 1)
+    if "</body>" not in html or "Reveal.initialize(" not in html:
+        raise ValueError(f"Not a Reveal slide export: {path}")
+    at = html.rfind("</body>")
+    path.write_text(html[:at] + snippet + "\n" + html[at:])
+    return True
+
+
+def fix_navigation(data):
+    provenance = integrity(data)
+    count = 0
+    for relative, record in provenance["files"].items():
+        path = ROOT / "materials" / relative
+        if path.suffix == ".html" and preserve_browser_navigation(path):
+            record["sha256"] = sha(path)
+            record["bytes"] = path.stat().st_size
+            transformations = record.setdefault("transformations", [])
+            if "preserve-browser-navigation" not in transformations:
+                transformations.append("preserve-browser-navigation")
+            count += 1
+    provenance["navigation_updated_at"] = datetime.now(timezone.utc).isoformat()
+    (ROOT / "publication.json").write_text(json.dumps(provenance, ensure_ascii=False, indent=2) + "\n")
+    print(f"Updated browser navigation in {count} slide exports")
 
 
 def source_revision(path):
@@ -92,7 +133,10 @@ def import_materials(data, slides, docs):
         destination = pending / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, destination)
+        patched = destination.suffix == ".html" and preserve_browser_navigation(destination)
         records[str(relative)] = {"source": source, "export": str(original), "sha256": sha(destination), "bytes": destination.stat().st_size}
+        if patched:
+            records[str(relative)]["transformations"] = ["preserve-browser-navigation"]
     provenance = {
         "imported_at": datetime.now(timezone.utc).isoformat(),
         "sources": {name: {"repository": data["sources"][name], **source_revision(path)} for name, path in sources.items()},
@@ -181,18 +225,22 @@ def prepare(data):
     for name in ["_quarto.yml", "theme.scss", "favicon.svg", "publication.json"]:
         shutil.copyfile(ROOT / name, project / name)
     shutil.copytree(ROOT / "materials", project, dirs_exist_ok=True)
-    homework = {item["id"]: item for item in data["homework"]}
+    homework = {(item["course"], item["id"]): item for item in data["homework"]}
     for lesson in data["lessons"]:
         path = lesson_path(lesson, data["year"])
         label = "Практика" if lesson["kind"] == "practices" else "Лекция" if lesson["kind"] == "lectures" else "Справочник"
         title = f'{label} {int(lesson["id"][1:])}. {lesson["title"]}'
-        buttons = "\n".join(f'<a href="/{path}/{lesson["id"]}-{fmt}">{FORMATS[fmt]}</a>' for fmt in lesson["formats"])
+        buttons = "\n".join(f'<a class="no-external" href="/{path}/{lesson["id"]}-{fmt}">{FORMATS[fmt]}</a>' for fmt in lesson["formats"])
+        hw = homework.get((lesson["course"], lesson.get("homework")))
+        if hw:
+            buttons += f'\n<a href="{escape(hw["url"], quote=True)}">Домашнее задание</a>'
         body = f'[ФП {lesson["course"][-1]} · осень 2026](../../index.qmd)\n\n{lesson["description"]}\n\n<div class="material-links">\n{buttons}\n</div>\n\n## Перед занятием\n\n{lesson["prerequisites"]}\n\n## Самостоятельная работа\n\nОткройте версию «По шагам» и попробуйте ответить на вопрос или решить задачу до следующего клика. Обычная версия слайдов и PDF подходят для повторения.'
         if "paper.pdf" in lesson["formats"]:
             body += "\n\nЛисток упражнений — один двусторонний лист A4 с условиями и местом для записей."
-        if lesson.get("homework"):
-            hw = homework[lesson["homework"]]
-            body += f'\n\n## Домашнее задание\n\n[Домашнее задание {hw["id"]}: {hw["title"]}]({hw["url"]}). Условия и инструкции по работе находятся в README репозитория.'
+        if hw:
+            body += "\n\nУсловия домашнего задания и инструкции по работе находятся в README по кнопке «Домашнее задание»."
+            if hw.get("visibility") == "private":
+                body += " Для этого задания нужен доступ к закрытому репозиторию курса в GitHub."
         siblings = [x for x in data["lessons"] if x["course"] == lesson["course"] and x["kind"] == lesson["kind"]]
         position = siblings.index(lesson)
         links = []
@@ -209,10 +257,7 @@ def prepare(data):
             group = [x for x in selected if x["kind"] == kind]
             if group:
                 body += f"\n\n## {title}\n\n" + list_lessons(group)
-        if course == "fp1":
-            body += "\n\n## Домашние задания\n\n" + "\n".join(f'- [{item["id"]} · {item["title"]}]({item["url"]})' for item in data["homework"])
-            body += "\n\nУсловия, настройка окружения и инструкции по сдаче находятся в README каждого задания."
-        elif data["notes"]:
+        if course == "fp2" and data["notes"]:
             body += "\n\n## Конспект\n\n" + "\n".join(f'- [{item["title"]}](/{data["year"]}/fp2/notes/{item["file"]}) — {item["description"]}' for item in data["notes"])
         write_page(project, f'{data["year"]}/{course}/index.qmd', f'ФП {course[-1]} · осень {data["year"]}', body)
     print(f"Prepared {len(list(project.rglob('*.qmd')))} pages")
@@ -268,6 +313,11 @@ def check(data):
         published = site / relative
         if published.is_file() and sha(published) != sha(ROOT / "materials" / relative):
             errors.append(f"Deployment export differs: {relative}")
+        if published.suffix == ".html":
+            html = published.read_text()
+            marker = 'id="fp-browser-navigation"'
+            if marker not in html or html.index(marker) < html.rfind("Reveal.initialize({"):
+                errors.append(f"Slide export lacks a correctly placed browser navigation fix: {relative}")
     if not (site / "search.json").is_file():
         errors.append("Search index missing")
     if any((site / path).exists() for path in ["archive", "materials", "fp1", "fp2", "2025"]):
@@ -311,7 +361,7 @@ def check_live(data):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["import", "sync-catalog", "prepare", "check", "live"])
+    parser.add_argument("command", choices=["import", "fix-navigation", "sync-catalog", "prepare", "check", "live"])
     parser.add_argument("--slides", type=Path)
     parser.add_argument("--docs", type=Path)
     args = parser.parse_args()
@@ -320,6 +370,8 @@ def main():
         if not args.slides or not args.docs:
             parser.error("import requires --slides and --docs")
         import_materials(data, args.slides, args.docs)
+    elif args.command == "fix-navigation":
+        fix_navigation(data)
     elif args.command == "sync-catalog":
         sync_catalog(data)
     elif args.command == "prepare":

@@ -18,14 +18,20 @@
     "2026/fp1/practices/p01/p01-publish.html": {
       "source": "slides",
       "export": "out/fp1/p01/p01-publish.html",
-      "sha256": "b8ec63d96aca948fb1f6cf50fd6e76aaaa2766aa7e8c8b93f19070912432b893",
-      "bytes": 5313227
+      "sha256": "9fd89784add8b39e690d13cb2678f3d267dba1f563da5c72d2b9799088d0f52d",
+      "bytes": 5313845,
+      "transformations": [
+        "preserve-browser-navigation"
+      ]
     },
     "2026/fp1/practices/p01/p01-publish-pauses.html": {
       "source": "slides",
       "export": "out/fp1/p01/p01-publish-pauses.html",
-      "sha256": "30aa63a403d4fff860bdad5660648df1a9b60c741c5797c0777c8b300f733faf",
-      "bytes": 5313334
+      "sha256": "0f96b71ca9fbdc02a9b0483ffeb2db5094a02c156fb19c54af7509b116fc5ae8",
+      "bytes": 5313952,
+      "transformations": [
+        "preserve-browser-navigation"
+      ]
     },
     "2026/fp1/practices/p01/p01-publish.pdf": {
       "source": "slides",
@@ -42,14 +48,20 @@
     "2026/fp1/practices/p02/p02-publish.html": {
       "source": "slides",
       "export": "out/fp1/p02/p02-publish.html",
-      "sha256": "7fbad6888b2f227dbd8b844f2021586089feac591cad29f6bf95a9e6a52283ea",
-      "bytes": 5298278
+      "sha256": "45c89c88d9ec6f4584d80432292432933a23965968ecd9906592aa11b5aae255",
+      "bytes": 5298896,
+      "transformations": [
+        "preserve-browser-navigation"
+      ]
     },
     "2026/fp1/practices/p02/p02-publish-pauses.html": {
       "source": "slides",
       "export": "out/fp1/p02/p02-publish-pauses.html",
-      "sha256": "0ce1e3512a360de915707d5d278d0d85020127365fbcd61edfec99498bbe465c",
-      "bytes": 5298378
+      "sha256": "21ad308def9aa715b791afd0436daddebfc9402de2149a3e6de36394703ebb3a",
+      "bytes": 5298996,
+      "transformations": [
+        "preserve-browser-navigation"
+      ]
     },
     "2026/fp1/practices/p02/p02-publish.pdf": {
       "source": "slides",
@@ -66,14 +78,20 @@
     "2026/fp1/practices/p03/p03-publish.html": {
       "source": "slides",
       "export": "out/fp1/p03/p03-publish.html",
-      "sha256": "03d31aa482117deb04d08070d87faef1e4f392df7b6f6e1e9c970c4435c69c4c",
-      "bytes": 5354264
+      "sha256": "a91028b8980f5dd20773872c275bfde0c486782cec0ad0611ead561fc53cd975",
+      "bytes": 5354882,
+      "transformations": [
+        "preserve-browser-navigation"
+      ]
     },
     "2026/fp1/practices/p03/p03-publish-pauses.html": {
       "source": "slides",
       "export": "out/fp1/p03/p03-publish-pauses.html",
-      "sha256": "5448a8f39a18d40e405faf798872553004ad281872f6ba50b9210dc0d2617d0b",
-      "bytes": 5354416
+      "sha256": "2171ff6fe951b399f6bfd4419e5bbadc463e94bca5460597e016ca136ab07fee",
+      "bytes": 5355034,
+      "transformations": [
+        "preserve-browser-navigation"
+      ]
     },
     "2026/fp1/practices/p03/p03-publish.pdf": {
       "source": "slides",
@@ -90,14 +108,20 @@
     "2026/fp1/practices/p04/p04-publish.html": {
       "source": "slides",
       "export": "out/fp1/p04/p04-publish.html",
-      "sha256": "ad72e7fed36a9613b52a6edaef8776ebf60f47540fc7e68acd0f49ff97b9e7e2",
-      "bytes": 5273739
+      "sha256": "e9af07bb7de9052b688d3453c28878c68c9cda799d902571be022ed2316446fd",
+      "bytes": 5274357,
+      "transformations": [
+        "preserve-browser-navigation"
+      ]
     },
     "2026/fp1/practices/p04/p04-publish-pauses.html": {
       "source": "slides",
       "export": "out/fp1/p04/p04-publish-pauses.html",
-      "sha256": "439e524e06637d7d381aaa40a75ac5d6f025f6ff070808356a0f2dc8f0244d6f",
-      "bytes": 5273828
+      "sha256": "668008c37180e3b98f96339fe710b13490e7eedefb613009d77dd0d72333c2fd",
+      "bytes": 5274446,
+      "transformations": [
+        "preserve-browser-navigation"
+      ]
     },
     "2026/fp1/practices/p04/p04-publish.pdf": {
       "source": "slides",
@@ -114,14 +138,20 @@
     "2026/fp2/lectures/l01/l01-publish.html": {
       "source": "slides",
       "export": "out/fp2/l01/l01-publish.html",
-      "sha256": "95cb1239bcb06137e5f2eff4f00ddaa7044e39135a37bccb41a64b4923aafac9",
-      "bytes": 5303555
+      "sha256": "4a20ecce65459c55c5506d2a8eb34604d18754e9ca1cded26bafe3c2625853ff",
+      "bytes": 5304173,
+      "transformations": [
+        "preserve-browser-navigation"
+      ]
     },
     "2026/fp2/lectures/l01/l01-publish-pauses.html": {
       "source": "slides",
       "export": "out/fp2/l01/l01-publish-pauses.html",
-      "sha256": "c21709bed56eeead49df680b1136e35a523642493cbd3dcfbae6efc23f6cd231",
-      "bytes": 5303572
+      "sha256": "a1568a7c867439586c4a965da5c2f022ad7571d3156cd4ca20162eeefa8c6ed7",
+      "bytes": 5304190,
+      "transformations": [
+        "preserve-browser-navigation"
+      ]
     },
     "2026/fp2/lectures/l01/l01-publish.pdf": {
       "source": "slides",
@@ -132,14 +162,20 @@
     "2026/fp2/lectures/l02/l02-publish.html": {
       "source": "slides",
       "export": "out/fp2/l02/l02-publish.html",
-      "sha256": "00c651584ba1b9a6e467bdf66770f5fcd300d2b9b70d153a7e2d1608f9f0bf9d",
-      "bytes": 5789125
+      "sha256": "84ab497821c8a47498e7ec4634b6e8f3584f7f68a3b8f83bee4a076ce08b78ec",
+      "bytes": 5789743,
+      "transformations": [
+        "preserve-browser-navigation"
+      ]
     },
     "2026/fp2/lectures/l02/l02-publish-pauses.html": {
       "source": "slides",
       "export": "out/fp2/l02/l02-publish-pauses.html",
-      "sha256": "0a995762d96d30b71f68b3e69df7e81ce91fe980ab5f5f5e315b335c7409711f",
-      "bytes": 5789204
+      "sha256": "86e7532504b0610be0a6db4e8597f5a9593af317f05a622a2b70a8f4d9389e8e",
+      "bytes": 5789822,
+      "transformations": [
+        "preserve-browser-navigation"
+      ]
     },
     "2026/fp2/lectures/l02/l02-publish.pdf": {
       "source": "slides",
@@ -154,5 +190,6 @@
       "bytes": 709689
     }
   },
-  "catalog_updated_at": "2026-10-05T09:53:10.526072+00:00"
+  "catalog_updated_at": "2026-10-05T09:53:10.526072+00:00",
+  "navigation_updated_at": "2026-10-05T10:12:38.877318+00:00"
 }

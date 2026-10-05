@@ -4,6 +4,8 @@ Organization website: https://fpcourse-materials.github.io/. The portal uses Qua
 
 URLs start with the year and course: `/2026/fp1/` and `/2026/fp2/`. Lesson pages and downloads share a directory, for example `/2026/fp1/practices/p04/` and `/2026/fp1/practices/p04/p04-publish.pdf`. The current publication includes FP1 practices P1–P4, FP2 lectures L1–L2, and the shortened FP2 notes through § 3.1.4. The 2025 archive and full FP2 notes are excluded.
 
+Each topic page has a homework button next to its slide and PDF buttons. Homework IDs are scoped by course, so FP1 and FP2 assignments with the same number remain distinct. P4 links to the existing private student template and states that GitHub access is required.
+
 ## Build and preview
 
 Install Quarto 1.10.18 and Python 3.11 or newer. Imported public materials are committed in `materials/`, so building the portal needs no credentials or access to private repositories.
@@ -16,6 +18,8 @@ make preview
 The complete publication is in `out/site/`. `make screenshots` checks desktop and mobile pages using the existing slides repository's Playwright and system Chromium; override `SLIDES` and `CHROME` when needed. Generated slides and PDFs are linked resources; portal search indexes the course descriptions, topics, and homework pages, not the full contents of those files.
 
 After deployment, `make live-check` verifies the public portal and search index, compares representative slide, exercise, and shortened-notes downloads against their recorded checksums, and confirms withdrawn materials return HTTP 404.
+
+The slide exports preserve Alt+Left/Right for browser Back/Forward; ordinary arrow keys still navigate slides. Imports apply `assets/browser-navigation.html` when the source export lacks it. `make fix-navigation build check` applies this fix to existing imported HTML and updates its checksums without rebuilding the material sources. The transformation is recorded in `publication.json`.
 
 ## Refresh teaching materials
 

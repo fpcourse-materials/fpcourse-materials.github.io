@@ -4332,4 +4332,21 @@ window.QuartoSupport = function () {
       </script>
     
 
+<script id="fp-browser-navigation">
+// Alt+Left/Right belong to browser Back/Forward, not Reveal's fragment skipping.
+(function () {
+  function configureBrowserNavigation() {
+    var previous = Reveal.getConfig().keyboardCondition;
+    Reveal.configure({
+      keyboardCondition: function (event) {
+        if (event.altKey && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) return false;
+        return typeof previous === 'function' ? previous(event) : true;
+      }
+    });
+  }
+  if (Reveal.isReady()) configureBrowserNavigation();
+  else Reveal.on('ready', configureBrowserNavigation);
+})();
+</script>
+
 </body></html>

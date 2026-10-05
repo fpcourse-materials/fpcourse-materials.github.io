@@ -9,14 +9,17 @@
     {"id":"p01","course":"fp1","kind":"practices","title":"Программирование в λ-исчислении","description":"Термы, свободные и связанные переменные, подстановка, β-редукция и числа Чёрча.","prerequisites":"Специальная подготовка не требуется.","formats":["publish.html","publish-pauses.html","publish.pdf","paper.pdf"],"homework":"01"},
     {"id":"p02","course":"fp1","kind":"practices","title":"Рекурсия в λ-исчислении","description":"Неподвижные точки, комбинатор рекурсии, нормальные формы и стратегии вычисления.","prerequisites":"Термы и β-редукция из практики 1.","formats":["publish.html","publish-pauses.html","publish.pdf","paper.pdf"],"homework":"02"},
     {"id":"p03","course":"fp1","kind":"practices","title":"Типы в λ-исчислении","description":"Простые типы, правила типизации, системы Карри и Чёрча, население типов.","prerequisites":"λ-исчисление и рекурсия из практик 1–2.","formats":["publish.html","publish-pauses.html","publish.pdf","paper.pdf"],"homework":"03"},
-    {"id":"p04","course":"fp1","kind":"practices","title":"Введение в Haskell","description":"Первые функции, сопоставление с образцом, ленивое вычисление и работа в GHCi.","prerequisites":"Понятия функции, вычисления и типа.","formats":["publish.html","publish-pauses.html","publish.pdf","paper.pdf"]},
-    {"id":"l01","course":"fp2","kind":"lectures","title":"Введение и воспоминания о ФП","description":"Обзор курса, термы и типы, функции, данные, классы типов и монады в Haskell.","prerequisites":"Базовый курс функционального программирования и Haskell.","formats":["publish.html","publish-pauses.html","publish.pdf"]},
-    {"id":"l02","course":"fp2","kind":"lectures","title":"Параметрический полиморфизм","description":"Полиморфные функции, параметричность и представление обобщённого кода.","prerequisites":"Типы, функции и повторение из лекции 1.","formats":["publish.html","publish-pauses.html","publish.pdf"]}
+    {"id":"p04","course":"fp1","kind":"practices","title":"Введение в Haskell","description":"Первые функции, сопоставление с образцом, ленивое вычисление и работа в GHCi.","prerequisites":"Понятия функции, вычисления и типа.","formats":["publish.html","publish-pauses.html","publish.pdf","paper.pdf"],"homework":"04"},
+    {"id":"l01","course":"fp2","kind":"lectures","title":"Введение и воспоминания о ФП","description":"Обзор курса, термы и типы, функции, данные, классы типов и монады в Haskell.","prerequisites":"Базовый курс функционального программирования и Haskell.","formats":["publish.html","publish-pauses.html","publish.pdf"],"homework":"01"},
+    {"id":"l02","course":"fp2","kind":"lectures","title":"Параметрический полиморфизм","description":"Полиморфные функции, параметричность и представление обобщённого кода.","prerequisites":"Типы, функции и повторение из лекции 1.","formats":["publish.html","publish-pauses.html","publish.pdf"],"homework":"02"}
   ],
   "homework": [
-    {"id":"01","title":"Программирование в λ-исчислении","url":"https://github.com/fpcourse-students/fp-2026-01"},
-    {"id":"02","title":"Рекурсия в λ-исчислении","url":"https://github.com/fpcourse-students/fp-2026-02"},
-    {"id":"03","title":"Типы в λ-исчислении","url":"https://github.com/fpcourse-students/fp-2026-03"}
+    {"id":"01","course":"fp1","title":"Программирование в λ-исчислении","url":"https://github.com/fpcourse-students/fp-2026-01"},
+    {"id":"02","course":"fp1","title":"Рекурсия в λ-исчислении","url":"https://github.com/fpcourse-students/fp-2026-02"},
+    {"id":"03","course":"fp1","title":"Типы в λ-исчислении","url":"https://github.com/fpcourse-students/fp-2026-03"},
+    {"id":"04","course":"fp1","title":"Введение в Haskell","url":"https://github.com/fpcourse-students/fp-2026-04","visibility":"private"},
+    {"id":"01","course":"fp2","title":"Вспоминаем Haskell и интерпретаторы","url":"https://github.com/fpcourse-students/fp2-2026-01"},
+    {"id":"02","course":"fp2","title":"Параметрический полиморфизм","url":"https://github.com/fpcourse-students/fp2-2026-02"}
   ],
   "notes": [
     {"file":"fp2-ch1-3.1.4.pdf","title":"Конспект до § 3.1.4","description":"Студенческая версия: главы 1–2 и начало главы 3."}
