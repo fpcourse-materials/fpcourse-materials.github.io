@@ -12,7 +12,7 @@
     {"id":"p04","course":"fp1","kind":"practices","title":"Введение в Haskell","description":"Первые функции, сопоставление с образцом, ленивое вычисление и работа в GHCi.","prerequisites":"Понятия функции, вычисления и типа.","formats":["publish.html","publish-pauses.html","publish.pdf","paper.pdf"],"homework":"04"},
     {"id":"l01","course":"fp2","kind":"lectures","title":"Введение и воспоминания о ФП","description":"Обзор курса, термы и типы, функции, данные, классы типов и монады в Haskell.","prerequisites":"Базовый курс функционального программирования и Haskell.","formats":["publish.html","publish-pauses.html","publish.pdf"],"homework":"01"},
     {"id":"l02","course":"fp2","kind":"lectures","title":"Параметрический полиморфизм","description":"Полиморфные функции, параметричность и представление обобщённого кода.","prerequisites":"Типы, функции и повторение из лекции 1.","formats":["publish.html","publish-pauses.html","publish.pdf"],"homework":"02"},
-    {"id":"l03","course":"fp2","kind":"lectures","title":"Специальный (ad-hoc) полиморфизм","description":"Классы типов и словари, вывод инстансов, дефункционализация, семейства типов, коерции и роли.","prerequisites":"Параметрический полиморфизм и вычисления на типах из лекции 2.","formats":["publish.html","publish-pauses.html","publish.pdf"]}
+    {"id":"l03","course":"fp2","kind":"lectures","title":"Специальный (ad-hoc) полиморфизм","description":"Классы типов и словари, вывод инстансов, дефункционализация, семейства типов, коерции и роли.","prerequisites":"Параметрический полиморфизм и вычисления на типах из лекции 2.","formats":["publish.html","publish-pauses.html","publish.pdf"],"homework":"03"}
   ],
   "homework": [
     {"id":"01","course":"fp1","title":"Программирование в λ-исчислении","url":"https://github.com/fpcourse-students/fp-2026-01"},
@@ -20,7 +20,8 @@
     {"id":"03","course":"fp1","title":"Типы в λ-исчислении","url":"https://github.com/fpcourse-students/fp-2026-03"},
     {"id":"04","course":"fp1","title":"Введение в Haskell","url":"https://github.com/fpcourse-students/fp-2026-04","visibility":"private"},
     {"id":"01","course":"fp2","title":"Вспоминаем Haskell и интерпретаторы","url":"https://github.com/fpcourse-students/fp2-2026-01"},
-    {"id":"02","course":"fp2","title":"Параметрический полиморфизм","url":"https://github.com/fpcourse-students/fp2-2026-02"}
+    {"id":"02","course":"fp2","title":"Параметрический полиморфизм","url":"https://github.com/fpcourse-students/fp2-2026-02"},
+    {"id":"03","course":"fp2","title":"Специальный (ad-hoc) полиморфизм","url":"https://github.com/fpcourse-students/03-ad-hoc"}
   ],
   "notes": [
     {"file":"fp2-ch1-3.pdf","title":"Конспект: главы 1–3","description":"Введение, параметрический и специальный (ad-hoc) полиморфизм."}

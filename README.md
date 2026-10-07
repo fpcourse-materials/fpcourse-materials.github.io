@@ -4,7 +4,7 @@ Organization website: https://fpcourse-materials.github.io/. The portal uses Qua
 
 URLs start with the year and course: `/2026/fp1/` and `/2026/fp2/`. Lesson pages and downloads share a directory, for example `/2026/fp1/practices/p04/` and `/2026/fp1/practices/p04/p04-publish.pdf`. The current publication includes FP1 practices P1–P4, FP2 lectures L1–L3, and the student FP2 notes with chapters 1–3. The 2025 archive and the full FP2 notes beyond chapter 3 are excluded.
 
-Topic pages have a homework button next to their slide and PDF buttons when a student template is configured in the catalog. Homework IDs are scoped by course, so FP1 and FP2 assignments with the same number remain distinct. P4 links to the existing private student template and states that GitHub access is required. L3 currently publishes the lecture materials without a homework link.
+Topic pages have a homework button next to their slide and PDF buttons when a student template is configured in the catalog. Homework IDs are scoped by course, so FP1 and FP2 assignments with the same number remain distinct. P4 links to the existing private student template and states that GitHub access is required. FP2 lectures L1–L3 link to their student homework repositories.
 
 ## Build and preview
 
