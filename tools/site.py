@@ -110,17 +110,31 @@ def source_revision(path):
     return {"revision": git("rev-parse", "HEAD"), "working_tree_sha256": digest.hexdigest(), "working_tree_modified": bool(git("status", "--porcelain"))}
 
 
-def import_materials(data, slides, docs):
+def import_materials(data, slides, docs, course=None):
     sources = {"slides": slides.resolve(), "docs": docs.resolve()}
-    decks = " ".join(f'{x["course"]}/{x["id"]}' for x in data["lessons"])
-    papers = " ".join(f'{x["course"]}/{x["id"]}' for x in data["lessons"] if "paper.pdf" in x["formats"])
+    lessons = [x for x in data["lessons"] if course is None or x["course"] == course]
+    decks = " ".join(f'{x["course"]}/{x["id"]}' for x in lessons)
+    papers = " ".join(f'{x["course"]}/{x["id"]}' for x in lessons if "paper.pdf" in x["formats"])
     subprocess.run(["make", "-C", str(slides), "public", f"PUBLIC_DECKS={decks}", f"PAPER_DECKS={papers}"], check=True)
+    versions = {name: {"repository": data["sources"][name], **source_revision(path)} for name, path in sources.items()}
+    previous = json.loads((ROOT / "publication.json").read_text()) if course else None
     pending = ROOT / "out/import"
     if pending.exists():
         shutil.rmtree(pending)
     pending.mkdir(parents=True)
     records = {}
     for source, original, relative in exports(data):
+        if course and relative.parts[1] != course:
+            record = previous["files"][str(relative)].copy()
+            path = ROOT / "materials" / relative
+            if not path.is_file() or sha(path) != record["sha256"] or path.stat().st_size != record["bytes"]:
+                raise ValueError(f"Existing publication export differs: {relative}")
+            destination = pending / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(path, destination)
+            record.setdefault("source_version", previous["sources"][source])
+            records[str(relative)] = record
+            continue
         path = sources[source] / original
         if not path.is_file():
             raise FileNotFoundError(f"Missing export: {path}")
@@ -134,12 +148,12 @@ def import_materials(data, slides, docs):
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, destination)
         patched = destination.suffix == ".html" and preserve_browser_navigation(destination)
-        records[str(relative)] = {"source": source, "export": str(original), "sha256": sha(destination), "bytes": destination.stat().st_size}
+        records[str(relative)] = {"source": source, "export": str(original), "sha256": sha(destination), "bytes": destination.stat().st_size, "source_version": versions[source]}
         if patched:
             records[str(relative)]["transformations"] = ["preserve-browser-navigation"]
     provenance = {
         "imported_at": datetime.now(timezone.utc).isoformat(),
-        "sources": {name: {"repository": data["sources"][name], **source_revision(path)} for name, path in sources.items()},
+        "sources": versions,
         "files": records,
     }
     target = ROOT / "materials"
@@ -344,12 +358,16 @@ def check_live(data):
         if json.load(response)["files"] != provenance["files"]:
             raise ValueError("Deployed publication list differs from the selected catalog")
     samples = [relative for relative in provenance["files"] if relative.endswith(("publish.html", "paper.pdf"))][:2]
+    samples += [relative for relative in provenance["files"] if "/fp2/lectures/" in relative and relative.endswith(("publish.html", "publish.pdf"))]
     samples += [relative for relative in provenance["files"] if "/notes/" in relative]
     for relative in samples:
         with urlopen(base + relative, timeout=30) as response:
             if hashlib.sha256(response.read()).hexdigest() != provenance["files"][relative]["sha256"]:
                 raise ValueError(f"Deployed file differs: {relative}")
-    for removed in ["archive/", "materials/fp2/2026/notes/fp2.pdf", "materials/archive/fp1/2025/mse2025-fp1-slides-01-handout.pdf", "fp1/2026/practices/p05/", "fp2/2026/lectures/l03/", f'{data["year"]}/fp1/practices/p05/', f'{data["year"]}/fp1/sessions/s01/', f'{data["year"]}/fp2/lectures/l03/', f'{data["year"]}/fp2/notes/fp2.pdf']:
+    selected = {lesson_path(lesson, data["year"]) for lesson in data["lessons"]} | set(provenance["files"])
+    for removed in ["archive/", "materials/fp2/2026/notes/fp2.pdf", "materials/archive/fp1/2025/mse2025-fp1-slides-01-handout.pdf", "fp1/2026/practices/p05/", "fp2/2026/lectures/l03/", f'{data["year"]}/fp1/practices/p05/', f'{data["year"]}/fp1/sessions/s01/', f'{data["year"]}/fp2/lectures/l03/', f'{data["year"]}/fp2/notes/fp2.pdf', f'{data["year"]}/fp2/notes/fp2-ch1-3.1.4.pdf']:
+        if removed.rstrip("/") in selected:
+            continue
         try:
             with urlopen(base + removed, timeout=30):
                 raise ValueError(f"Removed material is still published: {removed}")
@@ -364,12 +382,13 @@ def main():
     parser.add_argument("command", choices=["import", "fix-navigation", "sync-catalog", "prepare", "check", "live"])
     parser.add_argument("--slides", type=Path)
     parser.add_argument("--docs", type=Path)
+    parser.add_argument("--course", choices=["fp1", "fp2"], help="Rebuild this course and retain other courses' existing exports")
     args = parser.parse_args()
     data = catalog()
     if args.command == "import":
         if not args.slides or not args.docs:
             parser.error("import requires --slides and --docs")
-        import_materials(data, args.slides, args.docs)
+        import_materials(data, args.slides, args.docs, args.course)
     elif args.command == "fix-navigation":
         fix_navigation(data)
     elif args.command == "sync-catalog":

@@ -45,41 +45,47 @@ try {
     await deck.goto(`http://127.0.0.1:${port}${lessonPath(lesson)}`, { waitUntil: 'networkidle' });
     const hw = homework.get(`${lesson.course}/${lesson.homework}`);
     const button = deck.locator('.material-links a').filter({ hasText: 'Домашнее задание' });
+    if (!lesson.homework) {
+      if (await button.count()) errors.push(`${lesson.course}/${lesson.id}: unexpected homework button`);
+      continue;
+    }
     if (!hw || await button.count() !== 1 || await button.getAttribute('href') !== hw.url) errors.push(`${lesson.course}/${lesson.id}: incorrect homework button`);
   }
   for (const course of ['fp1', 'fp2']) {
     await deck.goto(`http://127.0.0.1:${port}/${catalog.year}/${course}/`, { waitUntil: 'networkidle' });
     if (await deck.locator('a[href^="https://github.com/fpcourse-students/"]').count()) errors.push(`${course}: homework links should be on topic pages`);
   }
-  for (const mode of ['publish', 'publish-pauses']) {
-    const topic = `http://127.0.0.1:${port}${lessonPath(practice)}`;
-    const slideURL = `${topic}${practice.id}-${mode}.html`;
-    await deck.goto(topic, { waitUntil: 'networkidle' });
-    await deck.locator(`.material-links a[href$="${practice.id}-${mode}.html"]`).click();
-    await deck.waitForFunction(() => window.Reveal?.isReady());
-    if (await deck.locator('aside.notes').count()) errors.push(`${mode}: speaker notes present`);
-    if (await deck.locator('.katex').count() === 0) errors.push(`${mode}: rendered math absent`);
-    await deck.evaluate(() => Reveal.slide(1));
-    const before = await deck.evaluate(() => JSON.stringify(Reveal.getIndices()));
-    await deck.keyboard.press('ArrowRight');
-    if (await deck.evaluate(() => JSON.stringify(Reveal.getIndices())) === before) errors.push(`${mode}: ordinary ArrowRight no longer advances slides`);
-    for (const [key, keyCode] of [['ArrowLeft', 37], ['ArrowRight', 39]]) {
-      const result = await deck.evaluate(({key, keyCode}) => {
-        const before = JSON.stringify(Reveal.getIndices());
-        const event = new KeyboardEvent('keydown', { key, code: key, keyCode, which: keyCode, altKey: true, bubbles: true, cancelable: true });
-        document.body.dispatchEvent(event);
-        return { prevented: event.defaultPrevented, moved: before !== JSON.stringify(Reveal.getIndices()) };
-      }, {key, keyCode});
-      if (result.prevented || result.moved) errors.push(`${mode}: Reveal intercepts Alt+${key}`);
+  for (const lesson of [practice, ...catalog.lessons.filter(x => x.course === 'fp2')]) {
+    for (const mode of ['publish', 'publish-pauses']) {
+      const topic = `http://127.0.0.1:${port}${lessonPath(lesson)}`;
+      const slideURL = `${topic}${lesson.id}-${mode}.html`;
+      await deck.goto(topic, { waitUntil: 'networkidle' });
+      await deck.locator(`.material-links a[href$="${lesson.id}-${mode}.html"]`).click();
+      await deck.waitForFunction(() => window.Reveal?.isReady());
+      if (await deck.locator('aside.notes').count()) errors.push(`${mode}: speaker notes present`);
+      if (await deck.locator('.math').count() && await deck.locator('.math:not(:has(.katex))').count()) errors.push(`${lesson.course}/${lesson.id}/${mode}: unrendered math`);
+      await deck.evaluate(() => Reveal.slide(1));
+      const before = await deck.evaluate(() => JSON.stringify(Reveal.getIndices()));
+      await deck.keyboard.press('ArrowRight');
+      if (await deck.evaluate(() => JSON.stringify(Reveal.getIndices())) === before) errors.push(`${mode}: ordinary ArrowRight no longer advances slides`);
+      for (const [key, keyCode] of [['ArrowLeft', 37], ['ArrowRight', 39]]) {
+        const result = await deck.evaluate(({key, keyCode}) => {
+          const before = JSON.stringify(Reveal.getIndices());
+          const event = new KeyboardEvent('keydown', { key, code: key, keyCode, which: keyCode, altKey: true, bubbles: true, cancelable: true });
+          document.body.dispatchEvent(event);
+          return { prevented: event.defaultPrevented, moved: before !== JSON.stringify(Reveal.getIndices()) };
+        }, {key, keyCode});
+        if (result.prevented || result.moved) errors.push(`${mode}: Reveal intercepts Alt+${key}`);
+      }
+      // Slide changes replace the hash; browser Back returns to the topic page.
+      await deck.goBack({ waitUntil: 'networkidle' });
+      if (deck.url() !== topic) errors.push(`${mode}: browser Back did not return to the topic`);
+      await deck.goForward({ waitUntil: 'load' });
+      if (!deck.url().startsWith(slideURL)) errors.push(`${mode}: browser Forward did not reopen slides`);
     }
-    // Slide changes replace the hash; browser Back returns to the topic page.
-    await deck.goBack({ waitUntil: 'networkidle' });
-    if (deck.url() !== topic) errors.push(`${mode}: browser Back did not return to the topic`);
-    await deck.goForward({ waitUntil: 'load' });
-    if (!deck.url().startsWith(slideURL)) errors.push(`${mode}: browser Forward did not reopen slides`);
   }
   if (errors.length) throw new Error(errors.join('\n'));
-  console.log(`Desktop/mobile pages, search, all six homework buttons, slide arrow keys and browser Back/Forward verified; screenshots in out/screenshots/`);
+  console.log(`Desktop/mobile pages, search, configured homework buttons, FP1/FP2 slide arrow keys and browser Back/Forward verified; screenshots in out/screenshots/`);
 } finally {
   if (browser) await browser.close();
   server.kill();

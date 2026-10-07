@@ -1,5 +1,5 @@
 # make build       render the complete website into out/site/
-# make import      rebuild and import the catalog's selected teaching materials
+# make import      rebuild and import selected materials; COURSE=fp2 refreshes only FP2
 # make check       check every local link and every imported file's checksum
 # make verify      build, check, and inspect desktop/mobile layouts
 # make preview     serve the built website at http://127.0.0.1:8765
@@ -8,22 +8,28 @@
 # make live-check  verify the deployed portal and representative downloads
 # make sync-catalog relocate/remove existing exports to match the current catalog
 # make fix-navigation preserve browser Back/Forward shortcuts in imported slides
+# make deploy-status show the latest GitHub Pages workflow runs
+# make deploy-wait RUN_ID=... wait for a selected deployment to finish
 .DEFAULT_GOAL := build
 QUARTO ?= quarto
 PYTHON ?= python3
 NODE ?= node
 SLIDES ?= ../slides
 DOCS ?= ../../docs
+COURSE ?=
+GH ?= gh
+GITHUB_REPO ?= fpcourse-materials/fpcourse-materials.github.io
+RUN_ID ?=
 PORT ?= 8765
 CHROME ?= /usr/bin/chromium
 export CHROME
 SITE_CACHE ?= /tmp/fpcourse-site-cache
 export XDG_CACHE_HOME := $(SITE_CACHE)
-.PHONY: help import fix-navigation sync-catalog prepare build check verify preview screenshots clean live-check
+.PHONY: help import fix-navigation sync-catalog prepare build check verify preview screenshots clean live-check deploy-status deploy-wait
 help:
-	@sed -n '1,10p' Makefile | sed 's/^# //'
+	@sed -n '1,12p' Makefile | sed 's/^# //'
 import:
-	$(PYTHON) tools/site.py import --slides "$(SLIDES)" --docs "$(DOCS)"
+	$(PYTHON) tools/site.py import --slides "$(SLIDES)" --docs "$(DOCS)" $(if $(COURSE),--course "$(COURSE)")
 fix-navigation:
 	$(PYTHON) tools/site.py fix-navigation
 sync-catalog:
@@ -36,6 +42,11 @@ check:
 	$(PYTHON) tools/site.py check
 live-check:
 	$(PYTHON) tools/site.py live
+deploy-status:
+	$(GH) run list --repo "$(GITHUB_REPO)" --workflow pages.yml --limit 5 --json databaseId,status,conclusion,headSha,url
+deploy-wait:
+	@test -n "$(RUN_ID)" || { echo 'RUN_ID is required'; exit 1; }
+	$(GH) run watch "$(RUN_ID)" --repo "$(GITHUB_REPO)" --interval 10 --exit-status
 verify: build check screenshots
 preview: build
 	$(PYTHON) -m http.server $(PORT) --bind 127.0.0.1 --directory out/site
