@@ -1,5 +1,5 @@
 {
-  "imported_at": "2026-10-15T06:02:24.041158+00:00",
+  "imported_at": "2026-10-15T18:54:26.870094+00:00",
   "sources": {
     "slides": {
       "repository": "https://github.com/fpcourse-materials/slides",
@@ -277,6 +277,54 @@
         "revision": "9b57bffbff6a113876020b4214221b9a89e7f959",
         "working_tree_sha256": "808f651745b6472a718fb4087cf8edcac59d50279496a13bf77925458c63c9fd",
         "working_tree_modified": false
+      }
+    },
+    "2026/fp1/practices/p06/p06-publish.html": {
+      "source": "slides",
+      "export": "out/fp1/p06/p06-publish.html",
+      "sha256": "70e7e5799f956f3de195ac9b3749301645124fc5bb829d494eb24bfe0375e2b0",
+      "bytes": 5271134,
+      "source_version": {
+        "repository": "https://github.com/fpcourse-materials/slides",
+        "revision": "ddabcb10e0a23ebfc6fd86ce1772360ad5f2d3e0",
+        "working_tree_sha256": "d324b6e07b9e82f7c12a2e793b904073151f1f0ccfbb682b8d08212998de7791",
+        "working_tree_modified": true
+      }
+    },
+    "2026/fp1/practices/p06/p06-publish-pauses.html": {
+      "source": "slides",
+      "export": "out/fp1/p06/p06-publish-pauses.html",
+      "sha256": "f01ca903c962e02e4e14ef949b25000e6424be1ab79dfd31dc565c3ec6f8559f",
+      "bytes": 5271223,
+      "source_version": {
+        "repository": "https://github.com/fpcourse-materials/slides",
+        "revision": "ddabcb10e0a23ebfc6fd86ce1772360ad5f2d3e0",
+        "working_tree_sha256": "d324b6e07b9e82f7c12a2e793b904073151f1f0ccfbb682b8d08212998de7791",
+        "working_tree_modified": true
+      }
+    },
+    "2026/fp1/practices/p06/p06-publish.pdf": {
+      "source": "slides",
+      "export": "out/fp1/p06/p06-publish.pdf",
+      "sha256": "8d9d28b52313b16d8db65306977658ba2c02ffe8fb1d091aadb1f3d2e9bdfa42",
+      "bytes": 319822,
+      "source_version": {
+        "repository": "https://github.com/fpcourse-materials/slides",
+        "revision": "ddabcb10e0a23ebfc6fd86ce1772360ad5f2d3e0",
+        "working_tree_sha256": "d324b6e07b9e82f7c12a2e793b904073151f1f0ccfbb682b8d08212998de7791",
+        "working_tree_modified": true
+      }
+    },
+    "2026/fp1/practices/p06/p06-paper.pdf": {
+      "source": "slides",
+      "export": "out/fp1/p06/p06-paper.pdf",
+      "sha256": "eb8d40c3e0a266c171c9fd4ed9af3ce23d56168b882a389f1cc952453fef4c00",
+      "bytes": 77169,
+      "source_version": {
+        "repository": "https://github.com/fpcourse-materials/slides",
+        "revision": "ddabcb10e0a23ebfc6fd86ce1772360ad5f2d3e0",
+        "working_tree_sha256": "d324b6e07b9e82f7c12a2e793b904073151f1f0ccfbb682b8d08212998de7791",
+        "working_tree_modified": true
       }
     },
     "2026/fp2/lectures/l01/l01-publish.html": {
