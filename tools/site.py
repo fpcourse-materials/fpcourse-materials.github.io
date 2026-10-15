@@ -110,23 +110,24 @@ def source_revision(path):
     return {"revision": git("rev-parse", "HEAD"), "working_tree_sha256": digest.hexdigest(), "working_tree_modified": bool(git("status", "--porcelain"))}
 
 
-def import_materials(data, slides, docs, course=None, lesson=None):
+def import_materials(data, slides, docs, course=None, lesson=None, notes_only=False):
     sources = {"slides": slides.resolve(), "docs": docs.resolve()}
-    lessons = [x for x in data["lessons"] if (course is None or x["course"] == course) and (lesson is None or x["id"] == lesson)]
-    if not lessons:
+    lessons = [] if notes_only else [x for x in data["lessons"] if (course is None or x["course"] == course) and (lesson is None or x["id"] == lesson)]
+    if not lessons and not notes_only:
         raise ValueError("No matching lessons in the publication catalog")
     decks = " ".join(f'{x["course"]}/{x["id"]}' for x in lessons)
     papers = " ".join(f'{x["course"]}/{x["id"]}' for x in lessons if "paper.pdf" in x["formats"])
-    subprocess.run(["make", "-C", str(slides), "public", f"PUBLIC_DECKS={decks}", f"PAPER_DECKS={papers}"], check=True)
+    if lessons:
+        subprocess.run(["make", "-C", str(slides), "public", f"PUBLIC_DECKS={decks}", f"PAPER_DECKS={papers}"], check=True)
     versions = {name: {"repository": data["sources"][name], **source_revision(path)} for name, path in sources.items()}
-    previous = json.loads((ROOT / "publication.json").read_text()) if course or lesson else None
+    previous = json.loads((ROOT / "publication.json").read_text()) if course or lesson or notes_only else None
     pending = ROOT / "out/import"
     if pending.exists():
         shutil.rmtree(pending)
     pending.mkdir(parents=True)
     records = {}
     for source, original, relative in exports(data):
-        if (course and relative.parts[1] != course) or (lesson and relative.parts[3] != lesson):
+        if (notes_only and source != "docs") or (course and relative.parts[1] != course) or (lesson and relative.parts[3] != lesson):
             record = previous["files"][str(relative)].copy()
             path = ROOT / "materials" / relative
             if not path.is_file() or sha(path) != record["sha256"] or path.stat().st_size != record["bytes"]:
@@ -388,6 +389,7 @@ def main():
     parser.add_argument("--docs", type=Path)
     parser.add_argument("--course", choices=["fp1", "fp2"], help="Rebuild this course and retain other courses' existing exports")
     parser.add_argument("--lesson", help="Rebuild one lesson and retain the other exports; requires --course")
+    parser.add_argument("--notes-only", action="store_true", help="Import only the selected notes and retain existing slide exports")
     args = parser.parse_args()
     data = catalog()
     if args.command == "import":
@@ -395,7 +397,9 @@ def main():
             parser.error("import requires --slides and --docs")
         if args.lesson and not args.course:
             parser.error("--lesson requires --course")
-        import_materials(data, args.slides, args.docs, args.course, args.lesson)
+        if args.notes_only and (args.course or args.lesson):
+            parser.error("--notes-only cannot be combined with --course or --lesson")
+        import_materials(data, args.slides, args.docs, args.course, args.lesson, args.notes_only)
     elif args.command == "fix-navigation":
         fix_navigation(data)
     elif args.command == "sync-catalog":

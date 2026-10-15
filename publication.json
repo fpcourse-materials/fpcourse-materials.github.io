@@ -1,17 +1,17 @@
 {
-  "imported_at": "2026-10-09T04:24:44.869274+00:00",
+  "imported_at": "2026-10-15T06:02:24.041158+00:00",
   "sources": {
     "slides": {
       "repository": "https://github.com/fpcourse-materials/slides",
-      "revision": "9b57bffbff6a113876020b4214221b9a89e7f959",
-      "working_tree_sha256": "808f651745b6472a718fb4087cf8edcac59d50279496a13bf77925458c63c9fd",
-      "working_tree_modified": false
+      "revision": "ddabcb10e0a23ebfc6fd86ce1772360ad5f2d3e0",
+      "working_tree_sha256": "d324b6e07b9e82f7c12a2e793b904073151f1f0ccfbb682b8d08212998de7791",
+      "working_tree_modified": true
     },
     "docs": {
       "repository": "https://github.com/fpcourse-materials/docs",
-      "revision": "ce8d62084bc2c2d46a1bbae8761d52c7a2cbbd31",
-      "working_tree_sha256": "522c6097b7da068c104d5490aebea8a24856c48b80109dc1322ebe450a0fb112",
-      "working_tree_modified": true
+      "revision": "c7d56996c8bd0add51cb15b77d9213f95d2f1053",
+      "working_tree_sha256": "ccb06b3fcb502501a2abb2e8de060f89d7de72ae134eae24c558135f618d8e9e",
+      "working_tree_modified": false
     }
   },
   "files": {
@@ -387,16 +387,16 @@
         "working_tree_modified": true
       }
     },
-    "2026/fp2/notes/fp2-ch1-3.pdf": {
+    "2026/fp2/notes/fp2-ch1-4.4.pdf": {
       "source": "docs",
-      "export": "fp2-ch1-3.pdf",
-      "sha256": "c8faa6d1c04f2035f54440bb6f3930c97624a6878be19dffd6fc050ad201396f",
-      "bytes": 917121,
+      "export": "fp2-ch1-4.4.pdf",
+      "sha256": "f2f5c3884ba34d05afde792e1c514210f0f8b64ffb898a2bc8c2bac91931060f",
+      "bytes": 1355299,
       "source_version": {
         "repository": "https://github.com/fpcourse-materials/docs",
-        "revision": "ce8d62084bc2c2d46a1bbae8761d52c7a2cbbd31",
-        "working_tree_sha256": "522c6097b7da068c104d5490aebea8a24856c48b80109dc1322ebe450a0fb112",
-        "working_tree_modified": true
+        "revision": "c7d56996c8bd0add51cb15b77d9213f95d2f1053",
+        "working_tree_sha256": "ccb06b3fcb502501a2abb2e8de060f89d7de72ae134eae24c558135f618d8e9e",
+        "working_tree_modified": false
       }
     }
   }
